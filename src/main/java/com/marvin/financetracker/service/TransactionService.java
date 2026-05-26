@@ -1,8 +1,6 @@
 package com.marvin.financetracker.service;
 
-import com.marvin.financetracker.model.Category;
 import com.marvin.financetracker.model.Transaction;
-import com.marvin.financetracker.model.User;
 import com.marvin.financetracker.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +22,12 @@ public class TransactionService {
         return transactionRepository.findById(id).orElse(null);
     }
 
-    public List<Transaction> findByCategory(Category category){
-        return transactionRepository.findByCategory(category);
+    public List<Transaction> findByCategoryId(Long id){
+        return transactionRepository.findByCategory_Id(id);
     }
 
-    public List<Transaction> findByUser(User user){
-        return transactionRepository.findByUser(user);
+    public List<Transaction> findByUserId(Long id){
+        return transactionRepository.findByUser_Id(id);
     }
 
     public List<Transaction> findAll(){
