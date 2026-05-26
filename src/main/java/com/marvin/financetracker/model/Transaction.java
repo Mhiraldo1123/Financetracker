@@ -17,14 +17,13 @@ public class Transaction {
     private BigDecimal amount;
     private String description;
     private LocalDateTime createdAt;
-    private Long categoryId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // Primary key
+    @JoinColumn(name = "user_id") // Foreign key
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "category_id") // Primary key
+    @JoinColumn(name = "category_id") // Foreign key
     private Category category;
 
 }
