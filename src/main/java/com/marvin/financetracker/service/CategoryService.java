@@ -1,5 +1,6 @@
 package com.marvin.financetracker.service;
 
+import com.marvin.financetracker.exception.ResourceNotFoundException;
 import com.marvin.financetracker.model.Category;
 import com.marvin.financetracker.model.CategoryType;
 import com.marvin.financetracker.repository.CategoryRepository;
@@ -20,11 +21,13 @@ public class CategoryService {
     }
 
     public Category findByName(String name){
-        return categoryRepository.findByName(name).orElse(null);
+        return categoryRepository.findByName(name)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with name: " + name));
     }
 
     public Category findByType(CategoryType categorytype){
-        return categoryRepository.findByType(categorytype).orElse(null);
+        return categoryRepository.findByType(categorytype)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with type: " + categorytype));
     }
 
     public List<Category> findAll(){
@@ -32,7 +35,8 @@ public class CategoryService {
     }
 
     public Category findById(Long id){
-        return categoryRepository.findById(id).orElse(null);
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + id));
     }
 
     public Category updateCategory(Category category){
