@@ -1,10 +1,8 @@
 package com.marvin.financetracker.security;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -54,7 +52,7 @@ public class JwtUtils {
 
     public Boolean validateToken(String token, String username){
         final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && extractExpiration(token).before(new Date()));
+        return (extractedUsername.equals(username) && !extractExpiration(token).before(new Date()));
     }
 
 

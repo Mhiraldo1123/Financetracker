@@ -1,5 +1,6 @@
 package com.marvin.financetracker.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String email;
     private String firstName;
@@ -20,4 +22,3 @@ public class User {
     private LocalDateTime createdAt;
 
 }
-
